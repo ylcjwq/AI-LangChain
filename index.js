@@ -12,8 +12,8 @@ const chatModel = new ChatOpenAI({
 
 const realLLM = new ChatOpenAI();
 
+// StringOutputParser 来处理输出，将 OpenAI 返回的复杂对象提取出最核心的字符串
 const outputPrase = new StringOutputParser();
-
 const simpleChain = chatModel.pipe(outputPrase);
 
 const llmWithFallback = simpleChain.withFallbacks({
