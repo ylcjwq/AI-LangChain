@@ -9,4 +9,15 @@ const loader = new CheerioWebBaseLoader(
 
 const docs = await loader.load();
 
-console.log(docs);
+// 可以对html元素进行过滤
+const loader1 = new CheerioWebBaseLoader(
+  "https://kaiyi.cool/blog/github-copilot",
+  {
+    selector: "h3",
+  }
+);
+
+const docs1 = await loader1.load();
+console.log(docs1[0].pageContent);
+
+console.log(docs, docs1);
