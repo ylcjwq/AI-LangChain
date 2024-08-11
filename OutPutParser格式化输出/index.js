@@ -48,7 +48,7 @@ const parser1 = StructuredOutputParser.fromNamesAndDescriptions({
 
 // console.log(res);
 
-//todo 3. CommaSeparatedListOutputParser 逐个列举
+//todo 3. CommaSeparatedListOutputParser 输出一个数组，逐个列举
 
 const parser2 = new CommaSeparatedListOutputParser();
 
