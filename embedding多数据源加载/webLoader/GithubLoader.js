@@ -4,6 +4,7 @@
 
 import { GithubRepoLoader } from "@langchain/community/document_loaders/web/github";
 import ignore from "ignore";
+import "dotenv/config";
 
 const loader = new GithubRepoLoader(
   "https://github.com/ylcjwq/resume-template",
