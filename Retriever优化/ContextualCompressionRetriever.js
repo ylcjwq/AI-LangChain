@@ -21,13 +21,13 @@ const model = new ChatOpenAI({
     baseURL: "https://api.chatanywhere.tech/v1/",
   },
 });
-// 创建一个用与压缩的chain
+// 创建一个用于压缩的chain
 const compressor = LLMChainExtractor.fromLLM(model);
 
 // 创建对上下文进行压缩的 Retriever
 const retriever = new ContextualCompressionRetriever({
-  baseCompressor: compressor,
-  baseRetriever: vectorstore.asRetriever(2),
+  baseCompressor: compressor, // 用于压缩的chain
+  baseRetriever: vectorstore.asRetriever(2), // 每次会在向量数据库中检索两条数据
 });
 
 const res = await retriever.invoke("茴香豆是做什么用的");
