@@ -70,6 +70,7 @@ const chatChain = RunnableSequence.from([
   new StringOutputParser(),
   new RunnablePassthrough({
     func: async (input) => {
+      console.log("AI回答：", input);
       history.addAIMessage(input);
       const messages = await history.getMessages();
       const new_lines = getBufferString(messages);
