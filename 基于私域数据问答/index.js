@@ -79,6 +79,6 @@ const ragChain = RunnableSequence.from([
 ]);
 
 const answer = await ragChain.invoke({
-  question: "什么是球状闪电",
+  question: "概括一下文章的主要内容",
 });
 console.log(answer);
