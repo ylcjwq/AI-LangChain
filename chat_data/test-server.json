@@ -1,0 +1,20 @@
+[
+  {
+    "type": "human",
+    "data": {
+      "content": "什么是球状闪电",
+      "additional_kwargs": {},
+      "response_metadata": {}
+    }
+  },
+  {
+    "type": "ai",
+    "data": {
+      "content": "球状闪电是一个充盈着能量的弯曲的空间，一个似有似无的空泡，一个足球大小的电子。它是作者在小说《球状闪电》中想象的一种形象。原文中描述了球状闪电是一个超现实的小东西，暗示着宇宙的博大和神秘，同时也暗示着可能存在与现实完全不同的其他世界。球状闪电并不是小说中描述的那种现实世界中的物体，而是作者的创作想象，代表着对宇宙和世界的探索和想象。",
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "additional_kwargs": {},
+      "response_metadata": {}
+    }
+  }
+]
