@@ -39,3 +39,68 @@ const res1 = await chain.invoke({
   input: "北京的天气怎么样",
 });
 console.log(res1);
+
+const getCurrentTimeSchema = z.object({
+  format: z
+    .enum(["iso", "locale", "string"])
+    .optional()
+    .describe("The format of the time, e.g. iso, locale, string"),
+});
+
+zodToJsonSchema(getCurrentTimeSchema);
+
+const modelWithMultiTools = model.bind({
+  tools: [
+    {
+      type: "function",
+      function: {
+        name: "getCurrentWeather",
+        description: "Get the current weather in a given location",
+        parameters: zodToJsonSchema(getCurrentWeatherSchema),
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "getCurrentTime",
+        description: "Get the current time in a given format",
+        parameters: zodToJsonSchema(getCurrentTimeSchema),
+      },
+    },
+  ],
+});
+
+const res2 = await modelWithMultiTools.invoke("现在几点了？");
+const res3 = await modelWithMultiTools.invoke("现在 iso 格式的时间是什么？");
+console.log(res2);
+console.log(res3);
+
+const modelWithForce = model.bind({
+  tools: [
+    {
+      type: "function",
+      function: {
+        name: "getCurrentWeather",
+        description: "Get the current weather in a given location",
+        parameters: zodToJsonSchema(getCurrentWeatherSchema),
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "getCurrentTime",
+        description: "Get the current time in a given format",
+        parameters: zodToJsonSchema(getCurrentTimeSchema),
+      },
+    },
+  ],
+  tool_choice: {
+    type: "function",
+    function: {
+      name: "getCurrentWeather",
+    },
+  },
+});
+
+const res4 = await modelWithForce.invoke("现在几点了？");
+console.log(res4);
